@@ -1,4 +1,4 @@
-import React, { SetStateAction } from 'react'
+import React, { SetStateAction, useEffect, useState } from 'react'
 import { IWineSelection } from '../../App'
 import './Selector.scss'
 
@@ -15,29 +15,66 @@ const Selector = ({
   setSortType,
   sortType,
 }: ISelectorProps) => {
-  const onAttributeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelection({ ...selection, type: e.target.value })
-  }
+  const [type, setSparkling] = useState({
+    sparkling:
+      selection.sparkling === true || selection.sparkling === undefined,
+    silent: selection.sparkling === false || selection.sparkling === undefined,
+  })
 
-  const onSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortType(e.target.value)
-  }
+  useEffect(() => {
+    const newSelection = { ...selection }
+    const { silent, sparkling } = type
+    newSelection.sparkling =
+      silent && sparkling ? undefined : silent ? false : sparkling ? true : null
+    setSelection(newSelection)
+  }, [type])
 
-  const onPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelection({ ...selection, maxPrice: +e.target.value })
-  }
+  // const onSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setSortType(e.target.value)
+  // }
+
+  // const onPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSelection({ ...selection, maxPrice: +e.target.value })
+  // }
+
+  useEffect(() => {}, [])
 
   return (
     <div className="selector">
-      <div className="attribute">
+      <div className="attribute sparkling">
+        <label htmlFor="sparkling" className="sparkling__title">
+          Игристое
+        </label>
+        <input
+          type="checkbox"
+          className="sparkling__checkbox"
+          id="sparkling"
+          checked={type.sparkling}
+          onChange={(e) =>
+            setSparkling({ ...type, sparkling: e.target.checked })
+          }
+        />
+        <label htmlFor="sparkling" className="sparkling__title">
+          Тихое
+        </label>
+        <input
+          type="checkbox"
+          className="sparkling__checkbox"
+          checked={type.silent}
+          id="silent"
+          onChange={(e) => setSparkling({ ...type, silent: e.target.checked })}
+        />
+      </div>
+
+      {/* <div className="attribute sparkling">
         <label htmlFor="type" className="attribute__label">
-          Тип
+          Газики-хуязики
         </label>
         <select
           name="attribute__selector"
           id="type"
-          onChange={(e) => onAttributeChange(e)}
-          value={selection.type}
+          // onChange={(e) => onGasChange(e)}
+          // value={selection.type}
         >
           <option value="any">Любое</option>
           <option value="red">Красное</option>
@@ -59,8 +96,8 @@ const Selector = ({
           <option value="priceDown">Цена по убыванию</option>
         </select>
       </div>
-      <div className="attribute">
-        <label htmlFor="price" className="attribute__label">
+      <div className="attribute price"> */}
+      {/* <label htmlFor="price" className="attribute__label">
           Цена{selection ? ` ${selection.maxPrice}` : ''}
         </label>
         <input
@@ -71,8 +108,24 @@ const Selector = ({
           className="attribute__slider"
           id="priceo"
           onChange={(e) => onPriceChange(e)}
-        />
-      </div>
+        /> */}
+      {/* <div className="field">
+          <span>Min</span>
+          <input type="number" className="input-min" value="2500" />
+        </div>
+        <div className="separator">-</div>
+        <div className="field">
+          <span>Max</span>
+          <input type="number" className="input-max" value="7500" />
+        </div>
+        <div className="slider">
+          <div className="progress"></div>
+        </div>
+        <div className="range-input">
+          <input type="range" className="range-min" min="0" max={10000} />
+          <input type="range" className="range-max" min="0" max={10000} />
+        </div> */}
+      {/* </div> */}
     </div>
   )
 }

@@ -1,22 +1,25 @@
-import { Link } from 'react-router-dom'
-import { IWine } from '../../data/wine'
+import { useParams } from 'react-router-dom'
+import Error from '../../components/Error/Error'
+import allWine, { IWine } from '../../data/wine'
+import './WineCard.scss'
 
-interface IWineCardProps {
-  wine?: IWine
-}
+const WineCard = () => {
+  const params = useParams()
 
-const WineCard = ({ wine }: IWineCardProps) => {
+  const foundWine = allWine.find((wine: IWine) => wine.id === params.id)
+
+  if (!foundWine) {
+    return <Error msg={'Такого вина не существует'} />
+  }
+
   return (
-    <>
-      <h5>Wine Card</h5>
-      <Link to={'/'}>Back</Link>
-    </>
-    // <div className="wine-card">
-    //   <h4 className="wine-card__title">{wine.name}</h4>
-    //   <p className="wine-card__type">{wine.type}</p>
-    //   <p className="wine-card__country">{wine.country}</p>
-    //   <p className="wine-card__price">{wine.price}</p>
-    // </div>
+    <div className="wine-card">
+      <h4 className="wine-card__title">{foundWine.name}</h4>
+      <p className="wine-card__type">{foundWine.type}</p>
+      <p className="wine-card__country">{foundWine.country}</p>
+      <p className="wine-card__price">{foundWine.price}</p>
+      <img className="wine-card__preview" src={`/${foundWine.id}.jpg`}></img>
+    </div>
   )
 }
 

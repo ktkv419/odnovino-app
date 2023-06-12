@@ -3,5 +3,68 @@
     display: flex;
     justify-content: space-between;
     width: 40rem;
+
+    &.price {
+      flex-direction: column;
+      input {
+        appearance: textfield;
+      }
+    }
   }
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+.slider,
+.progress {
+  height: 5px;
+  border-radius: 5px;
+}
+
+.slider {
+  background-color: grey;
+  position: relative;
+  .progress {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    background-color: red;
+  }
+}
+
+.range-input {
+  position: relative;
+
+  input {
+    position: absolute;
+    top: -7px;
+    height: 5px;
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    pointer-events: none;
+  }
+}
+
+input[type='range']::-webkit-slider-thumb {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  appearance: none;
+  background: red;
+  pointer-events: auto;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  pointer-events: auto;
+  appearance: none;
+  background: red;
 }

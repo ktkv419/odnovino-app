@@ -1,5 +1,6 @@
 import { IWine } from '../../data/wine'
 import WineItem from '../../components/WineList/WineItem/WineItem'
+import './WineList.scss'
 
 interface IWineListProps {
   wineList: IWine[]
