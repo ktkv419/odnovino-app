@@ -1,3 +1,4 @@
+// Сладость слайдер имеет Сладкое, Полуладкое, Полусухое, сухое
 import React, { SetStateAction, useEffect, useState } from 'react'
 import { IWineSelection } from '../../App'
 import './Selector.scss'

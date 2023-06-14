@@ -1,27 +1,55 @@
+// checkbox states all => all; undefined => all
 export interface IWine {
   id: string
+  // input text
   name: string
+  // input text+checkbox (hides when input has text)
   grapes: string[]
-  country: string
+  // input text+checkbox (hides when input has text)
+  location: {
+    // region?: string
+    country: string
+  }
+  // input checkbox
+  // Тихое крепленое
+  // Тихое десертное
+  // Тихое
+  // Игристое
+  // type: ['Игристое', '']
+  // sparkling state = checked => only sparkling, unchecked => all
   sparkling: boolean
+  // Только у игристого. Шарма и тд
   sparklingType?: string
+  // Только у тихого. Десертное / крепленое
+  type?: string[]
+  // input checkbox
   color: string
+  // input range
   sweetness: {
     name: string
     scale: number
   }
+  // input range
   intensity: {
     name: string
     scale: number
   }
+  // input range
   bitterness: {
     name: string
     scale: number
   }
+  // input range
   tannins?: {
     name: string
     scale: number
   }
+  // input checkbox
+  // Может быть у любого вина
+  growth?: boolean
+  // Тоже у любого вина
+  // Выдержка
+  extract?: boolean
   volume: number
   price: number
 }
