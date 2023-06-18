@@ -29,9 +29,10 @@ const WineItem = ({ wine }: IWineItemProps) => {
           ))}
         </ul>
       </div>
+      <p>{wine.sweetness.scale}</p>
       <div className="wine-item__item">
         <p className="wine-item__label">Страна</p>
-        <p className="wine-item__country">{wine.country}</p>
+        <p className="wine-item__country">{wine.location.country}</p>
       </div>
       <div className="wine-item__item">
         <p className="wine-item__label">Тип</p>

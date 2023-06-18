@@ -8,31 +8,35 @@ import WineCard from './containers/WineCard/WineCard'
 
 export interface IWineSelection {
   // For name search
-  // name?: string
+  name: string | undefined
   grapes: string[] | undefined
-  country: string | undefined
-  sparkling: string[] | undefined
+  location:
+    | {
+        region?: string
+        country: string
+      }
+    | undefined
+  sparkling: boolean
   sparklingType?: string
-  color: string[] | undefined | null
-  sweetnessScale: number | undefined
-  intensityScale: number | undefined
-  bitternessScale: number | undefined
-  tannins?: {
-    name: string
-    scale: number
-  }
+  color: string[]
+  sweetness: number | undefined
+  intensity: number | undefined
+  bitterness: number | undefined
+  tannins: number | undefined
   price: { min: number; max: number } | undefined
 }
 
 const App = () => {
   const [selection, setSelection] = useState<IWineSelection>({
+    name: undefined,
     grapes: undefined,
-    country: undefined,
-    sparkling: undefined,
-    color: undefined,
-    sweetnessScale: undefined,
-    intensityScale: undefined,
-    bitternessScale: undefined,
+    location: undefined,
+    sparkling: false,
+    color: [],
+    sweetness: undefined,
+    intensity: undefined,
+    bitterness: undefined,
+    tannins: undefined,
     price: undefined,
   })
   const [sortType, setSortType] = useState<string>('priceDown')
@@ -41,14 +45,38 @@ const App = () => {
   useEffect(() => {
     setShownWine(
       allWine.filter((wine) => {
-        if (
-          selection.sparkling === undefined ||
-          selection.sparkling.includes(wine.sparkling)
-        )
-          return true
-        if (selection.sparkling === null) return false
+        let boolean = false
+
+        boolean = selection.name
+          ? wine.name.includes(selection.name)
+            ? true
+            : false
+          : true
+        if (!boolean) return false
+        boolean = !selection.sparkling
+          ? true
+          : selection.sparkling && wine.sparkling
+          ? true
+          : false
+        if (!boolean) return false
+        boolean =
+          selection.color.length === 0
+            ? true
+            : selection.color.includes(wine.color)
+            ? true
+            : false
+        if (!boolean) return false
+        boolean =
+          selection.sweetness !== undefined
+            ? selection.sweetness === wine.sweetness.scale
+              ? true
+              : false
+            : true
+
+        return boolean
       })
     )
+    console.log(selection)
   }, [selection])
 
   const router = createBrowserRouter([

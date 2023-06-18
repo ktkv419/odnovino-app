@@ -18,7 +18,12 @@ const WineList = ({ wineList, sortType }: IWineListProps) => {
     <WineItem key={wine.id} wine={wine} />
   ))
 
-  return <div className="wine-list">{renderedWines}</div>
+  return (
+    <>
+      <div className="wine-list__amount">{renderedWines.length}</div>
+      <div className="wine-list">{renderedWines}</div>
+    </>
+  )
 }
 
 export default WineList

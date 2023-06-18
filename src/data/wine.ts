@@ -1,4 +1,5 @@
 // checkbox states all => all; undefined => all
+export type IWineColor = 'Красное' | 'Белое' | 'Розовое' | 'Оранжевое'
 export interface IWine {
   id: string
   // input text
@@ -7,7 +8,7 @@ export interface IWine {
   grapes: string[]
   // input text+checkbox (hides when input has text)
   location: {
-    // region?: string
+    region?: string
     country: string
   }
   // input checkbox
@@ -23,7 +24,7 @@ export interface IWine {
   // Только у тихого. Десертное / крепленое
   type?: string[]
   // input checkbox
-  color: string
+  color: IWineColor
   // input range
   sweetness: {
     name: string
@@ -59,7 +60,7 @@ const allWine: IWine[] = [
     id: '0',
     name: '"Маркеза Винченца Станга" Гран Дессерт',
     grapes: ['Треббьяно', 'Гарганега', 'Мускат'],
-    country: 'Пьемонт, Италия',
+    location: { region: 'Пьемонт', country: 'Италия' },
     sparkling: true,
     sparklingType: 'Шарма',
     color: 'Белое',
@@ -76,7 +77,7 @@ const allWine: IWine[] = [
     id: '1',
     name: 'Буве Розе, 2018',
     grapes: ['Каберне Фран'],
-    country: 'Долина Луары, Франция',
+    location: { region: 'Долина Луары', country: 'Франция' },
     sparkling: true,
     sparklingType: 'Традиционный',
     color: 'Розовое',
@@ -90,7 +91,7 @@ const allWine: IWine[] = [
     id: '2',
     name: '"Лунетта" Просекко DOC, 2021',
     grapes: ['Глера'],
-    country: 'Венето, Италия',
+    location: { region: 'Венето', country: 'Италия' },
     sparkling: true,
     sparklingType: 'Шарма',
     color: 'Белое',
@@ -104,7 +105,8 @@ const allWine: IWine[] = [
     id: '3',
     name: 'Шато Пино, Петнат Мерло ЗГУ, 2021',
     grapes: ['Мерло'],
-    country: 'Новороссийск, Кубань, Россия',
+    location: { region: 'Кубань', country: 'Россия' },
+    // country: 'Новороссийск, Кубань, Россия',
     sparkling: true,
     color: 'Красное',
     sweetness: { name: 'Сухое', scale: 0 },
@@ -120,7 +122,7 @@ const allWine: IWine[] = [
     id: '4',
     name: 'Ханс Баер Рислинг, 2021',
     grapes: ['Рислинг'],
-    country: 'Рейнхессен, Германия',
+    location: { region: 'Рейнхессен', country: 'Германия' },
     sparkling: false,
     color: 'Белое',
     sweetness: { name: 'Полусухое', scale: 2 },
@@ -133,7 +135,8 @@ const allWine: IWine[] = [
     id: '5',
     name: 'Рейнеке Резерв, 2020',
     grapes: ['Совиньон Блан'],
-    country: 'Стелленбош, Западный Кейп, ЮАР',
+    location: { region: 'Стелленбош', country: 'ЮАР' },
+    // country: ', Западный Кейп, ',
     sparkling: false,
     color: 'Белое',
     sweetness: { name: 'Сухое', scale: 0 },
@@ -146,7 +149,7 @@ const allWine: IWine[] = [
     id: '6',
     name: 'Костадор, "Метаморфика" Чарелло Брисат, 2020',
     grapes: ['Шарельо'],
-    country: 'Каталония, Испания',
+    location: { region: 'Каталония', country: 'Испания' },
     sparkling: false,
     color: 'Оранжевое',
     sweetness: { name: 'Сухое', scale: 0 },
@@ -159,7 +162,7 @@ const allWine: IWine[] = [
     id: '7',
     name: 'Луи Майе Кот де Прованс AOP, 2021',
     grapes: ['Гренаш', 'Сенсо', 'Сира'],
-    country: 'Прованс, Франция',
+    location: { region: 'Прованс', country: 'Франция' },
     sparkling: false,
     color: 'Розовое',
     sweetness: { name: 'Сухое', scale: 0 },
@@ -172,7 +175,7 @@ const allWine: IWine[] = [
     id: '8',
     name: 'Сасси Кьюзи IGT, 2017',
     grapes: ['Мерло', 'Санджовезе'],
-    country: 'Тоскана, Италия',
+    location: { region: 'Тоскана', country: 'Италия' },
     sparkling: false,
     color: 'Красное',
     sweetness: { name: 'Сухое', scale: 0 },
@@ -186,7 +189,8 @@ const allWine: IWine[] = [
     id: '9',
     name: 'Шато Ля Лагун О’Медок AOC, 2016',
     grapes: ['Каберне Совиньон', 'Мерло', 'Пти Вердо'],
-    country: "О'Медок, Бордо, Франция",
+    location: { region: "О'медок", country: 'Франция' },
+    // country: "О'Медок, Бордо, Франция",
     sparkling: false,
     color: 'Красное',
     sweetness: { name: 'Сухое', scale: 0 },
@@ -200,7 +204,7 @@ const allWine: IWine[] = [
     id: '10',
     name: 'Блауэр Цвайгельт, Анита & Ханс Ниттнаус, 2019',
     grapes: ['Цвайгельт'],
-    country: 'Бургенланд, Австрия',
+    location: { region: 'Бургеланд', country: 'Австрия' },
     sparkling: false,
     color: 'Красное',
     sweetness: { name: 'Сухое', scale: 0 },
@@ -220,9 +224,9 @@ const allWine: IWine[] = [
       'Тинта Баррока',
       'Сузао',
     ],
-    country: 'Дору, Португалия',
+    location: { region: 'Дору', country: 'Португалия' },
     sparkling: false,
-    // КРЕПЛЕНОЕ БЛЯТЬ SPARKLING ИЛИ НЕТ И ЧЕ ПО ЦВЕТУ
+    type: ['Крепленое'],
     color: 'Красное',
     sweetness: { name: 'Сладкое', scale: 5 },
     intensity: { name: 'Плотное', scale: 3 },
@@ -235,9 +239,10 @@ const allWine: IWine[] = [
     id: '12',
     name: '"Дон Давид" Торронтес Лейт Харвест',
     grapes: ['Торронтес'],
-    country: 'Долина Кальчаки, Аргентина',
+    location: { region: 'Долина Кальчаки', country: 'Аргентина' },
     // че сука значит десертное :C
     sparkling: true,
+    sparklingType: 'Десертное',
     color: 'Белое',
     sweetness: { name: 'Сладкое', scale: 5 },
     intensity: { name: 'Плотное', scale: 3 },

@@ -16,7 +16,7 @@ const WineCard = () => {
     <div className="wine-card">
       <h4 className="wine-card__title">{foundWine.name}</h4>
       <p className="wine-card__type">{foundWine.type}</p>
-      <p className="wine-card__country">{foundWine.country}</p>
+      <p className="wine-card__country">{foundWine.location.country}</p>
       <p className="wine-card__price">{foundWine.price}</p>
       <img className="wine-card__preview" src={`/${foundWine.id}.jpg`}></img>
     </div>
