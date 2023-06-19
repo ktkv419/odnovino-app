@@ -1,5 +1,6 @@
 import React, { SetStateAction, useEffect, useState } from 'react'
 import { IWineSelection } from '../../../App'
+import '../Selector.scss'
 
 interface ISelectionCheckboxProps {
   title: string
@@ -31,18 +32,17 @@ const SelectionCheckbox = ({
   }, [checkboxState])
 
   return (
-    <div className="selection">
-      <label htmlFor={id} className="selector__title">
-        {title}
-      </label>
+    <div className="selection selection--checkbox">
       <input
         type="checkbox"
-        className="selector__checkbox"
+        className="selection__checkbox"
         id={id}
         checked={checkboxState}
         onChange={(e) => setCheckboxState(e.target.checked)}
-        data-filter={title}
       />
+      <label htmlFor={id} className="selection__title">
+        {title}
+      </label>
     </div>
   )
 }

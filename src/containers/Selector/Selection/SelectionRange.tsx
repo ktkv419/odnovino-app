@@ -27,14 +27,17 @@ const SelectionRange = ({
   }, [checkboxState, rangeState])
 
   return (
-    <div className="selection">
-      <label htmlFor={id}>{title}</label>
+    <div className="selection selection--range">
       <input
         type="checkbox"
         id={id}
+        className="selection__checkbox"
         checked={checkboxState}
         onChange={(e) => setCheckboxState(e.target.checked)}
       />
+      <label className="selection__title" htmlFor={id}>
+        {title}
+      </label>
       {checkboxState ? (
         <input
           type="range"

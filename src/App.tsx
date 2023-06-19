@@ -5,6 +5,7 @@ import allWine, { IWine } from './data/wine'
 import WineList from './containers/WineList/WineList'
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import WineCard from './containers/WineCard/WineCard'
+import filterWine from './utils/filter'
 
 export interface IWineSelection {
   // For name search
@@ -43,40 +44,7 @@ const App = () => {
   const [shownWine, setShownWine] = useState<Array<IWine>>()
 
   useEffect(() => {
-    setShownWine(
-      allWine.filter((wine) => {
-        let boolean = false
-
-        boolean = selection.name
-          ? wine.name.includes(selection.name)
-            ? true
-            : false
-          : true
-        if (!boolean) return false
-        boolean = !selection.sparkling
-          ? true
-          : selection.sparkling && wine.sparkling
-          ? true
-          : false
-        if (!boolean) return false
-        boolean =
-          selection.color.length === 0
-            ? true
-            : selection.color.includes(wine.color)
-            ? true
-            : false
-        if (!boolean) return false
-        boolean =
-          selection.sweetness !== undefined
-            ? selection.sweetness === wine.sweetness.scale
-              ? true
-              : false
-            : true
-
-        return boolean
-      })
-    )
-    console.log(selection)
+    setShownWine(filterWine(allWine, selection))
   }, [selection])
 
   const router = createBrowserRouter([

@@ -40,7 +40,7 @@ const Selector = ({ setSelection, selection }: ISelectorProps) => {
         />
       </div>
 
-      <div className="selector--color">
+      <div className="selector selector--color">
         <SelectionCheckbox
           id="red"
           title="Красное"
@@ -67,6 +67,17 @@ const Selector = ({ setSelection, selection }: ISelectorProps) => {
         />
       </div>
 
+      {selection.color.includes('Красное') ? (
+        <SelectionRange
+          title="Танинность"
+          id="tannins"
+          selection={selection}
+          setSelection={setSelection}
+        />
+      ) : (
+        ''
+      )}
+
       <SelectionRange
         id="sweetness"
         selection={selection}
@@ -79,42 +90,12 @@ const Selector = ({ setSelection, selection }: ISelectorProps) => {
         selection={selection}
         setSelection={setSelection}
       />
-      {selection.color.includes('Красное') ? (
-        <SelectionRange
-          title="Танинность"
-          id="tannins"
-          selection={selection}
-          setSelection={setSelection}
-        />
-      ) : (
-        ''
-      )}
       <SelectionRange
         id="bitterness"
         title="Кислотность"
         selection={selection}
         setSelection={setSelection}
       />
-
-      {/* <input
-        type="checkbox"
-        id="sweetness"
-        checked={sweetnessSelection}
-        onChange={(e) => setSweetnessSelection(e.target.checked)}
-      />
-      {sweetnessSelection ? (
-        <input
-          type="range"
-          id="sweetness-range"
-          min={0}
-          max={5}
-          step={1}
-          value={sweetnessRange}
-          onChange={onSweetnessChange}
-        />
-      ) : (
-        ''
-      )} */}
     </div>
   )
 }
