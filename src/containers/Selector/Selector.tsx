@@ -1,9 +1,9 @@
 // Сладость слайдер имеет Сладкое, Полуладкое, Полусухое, сухое
-import React, { SetStateAction } from 'react'
+import { SetStateAction } from 'react'
 import { IWineSelection } from '../../App'
-import './Selector.scss'
 import SelectionCheckbox from './Selection/SelectionCheckbox'
 import SelectionRange from './Selection/SelectionRange'
+import './Selector.scss'
 
 interface ISelectorProps {
   selection: IWineSelection
