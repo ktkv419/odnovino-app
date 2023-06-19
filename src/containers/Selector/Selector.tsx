@@ -67,35 +67,45 @@ const Selector = ({ setSelection, selection }: ISelectorProps) => {
         />
       </div>
 
-      {selection.color.includes('Красное') ? (
+      <div className="selector selector--taste">
+        {selection.color.includes('Красное') ? (
+          <SelectionRange
+            title="Танинность"
+            id="tannins"
+            selection={selection}
+            setSelection={setSelection}
+          />
+        ) : (
+          ''
+        )}
+
         <SelectionRange
-          title="Танинность"
-          id="tannins"
+          id="sweetness"
+          selection={selection}
+          setSelection={setSelection}
+          title="Сладость"
+        />
+        <SelectionRange
+          title="Насыщенность"
+          id="intensity"
           selection={selection}
           setSelection={setSelection}
         />
-      ) : (
-        ''
-      )}
-
-      <SelectionRange
-        id="sweetness"
-        selection={selection}
-        setSelection={setSelection}
-        title="Сладость"
-      />
-      <SelectionRange
-        title="Насыщенность"
-        id="intensity"
-        selection={selection}
-        setSelection={setSelection}
-      />
-      <SelectionRange
-        id="bitterness"
-        title="Кислотность"
-        selection={selection}
-        setSelection={setSelection}
-      />
+        <SelectionRange
+          id="bitterness"
+          title="Кислотность"
+          selection={selection}
+          setSelection={setSelection}
+        />
+      </div>
+      <div className="selector selector--tags">
+        <SelectionCheckbox
+          id="extract"
+          title="Выдержанное"
+          selection={selection}
+          setSelection={setSelection}
+        />
+      </div>
     </div>
   )
 }

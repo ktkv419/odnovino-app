@@ -114,8 +114,7 @@ const allWine: IWine[] = [
     intensity: { name: 'Плотное', scale: 2 },
     bitterness: { name: 'Мягкое', scale: 1 },
     // ???????????? Красное же
-    // tannins: '',
-    // tanninsScale: ,
+    tannins: { name: 'Хуй его знает', scale: 4 },
     volume: 750,
     price: 1680,
   },
@@ -129,6 +128,7 @@ const allWine: IWine[] = [
     sweetness: { name: 'Полусухое', scale: 2 },
     intensity: { name: 'Легкое', scale: 0 },
     bitterness: { name: 'Мягкое', scale: 0 },
+    extract: true,
     volume: 750,
     price: 1680,
   },
@@ -231,6 +231,7 @@ const allWine: IWine[] = [
     color: 'Красное',
     sweetness: { name: 'Сладкое', scale: 5 },
     intensity: { name: 'Плотное', scale: 3 },
+    tannins: { name: 'А хуй его знает опять', scale: 5 },
     // Да ты рофлишь, он кислый или нет...
     bitterness: { name: 'та хуй его знает', scale: 1 },
     volume: 750,

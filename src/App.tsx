@@ -24,6 +24,7 @@ export interface IWineSelection {
   intensity: number | undefined
   bitterness: number | undefined
   tannins: number | undefined
+  extract: boolean
   price: { min: number; max: number } | undefined
 }
 
@@ -38,6 +39,7 @@ const App = () => {
     intensity: undefined,
     bitterness: undefined,
     tannins: undefined,
+    extract: false,
     price: undefined,
   })
   const [sortType, setSortType] = useState<string>('priceDown')

@@ -18,7 +18,7 @@ const SelectionCheckbox = ({
   const [checkboxState, setCheckboxState] = useState(false)
 
   useEffect(() => {
-    if (id === 'sparkling') {
+    if (id === 'sparkling' || id === 'extract') {
       setSelection({ ...selection, [id]: checkboxState })
     } else {
       let colorList = [...selection.color]
