@@ -50,6 +50,7 @@ export interface IWine {
   growth?: boolean
   // Тоже у любого вина
   // Выдержка
+  // !!!!!!!!!!!!!!
   extract?: boolean
   volume: number
   price: number

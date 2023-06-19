@@ -23,12 +23,9 @@
     border-radius: 2rem;
   }
 
-  &__checkbox:checked + &__title {
+  &__checkbox:checked+&__title {
     color: white;
     background-color: black;
-  }
-
-  &--checkbox {
   }
 
   // &--double-range {
